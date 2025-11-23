@@ -1,0 +1,17 @@
+# Dependencias y paquetes
+**/node_modules/
+
+# Entornos
+**/.env
+**/.env.*
+
+# Archivos sensibles/no necesarios
+Requerimientos.txt
+
+# Builds
+**/dist/
+**/build/
+
+# Logs
+**/*.log
+
