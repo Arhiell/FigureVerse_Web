@@ -1,17 +1,21 @@
-# Dependencias y paquetes
-**/node_modules/
-
-# Entornos
-**/.env
-**/.env.*
-
-# Archivos sensibles/no necesarios
-Requerimientos.txt
-
-# Builds
-**/dist/
-**/build/
-
-# Logs
-**/*.log
-
+backend/node_modules/
+node_modules/
+Enspoind.txt
+leer.txt
+backend/.env
+frontend/.env
+dist/
+build/
+.DS_Store
+frontend/node_modules/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.sqlite
+backend/dev.sqlite
+backend/backend/dev.sqlite
+.env
+.env.*
+Thumbs.db
+.cache/
