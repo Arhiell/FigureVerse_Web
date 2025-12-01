@@ -125,7 +125,7 @@
       );
     }
     return React.createElement("div",{className:"catalog"},
-      React.createElement(window.Feraytek.Header,{}),
+      React.createElement(window.Figureverse.Header,{}),
       React.createElement("h1",{className:"page-title"},"Mis pedidos"),
       msg?React.createElement("div",{className:`msg ${msg.type}`},msg.text):null,
       React.createElement("div",{className:"top-actions filters-row"},
@@ -156,13 +156,13 @@
       (items.length===0 && !err? React.createElement("div",{className:"empty-state"},
         React.createElement("div",{className:"msg"}, status==="Todos"?"No tenés pedidos aún":"No hay pedidos con ese estado"),
         React.createElement("div",{className:"actions"},
-          React.createElement("button",{className:"btn primary",onClick:()=>{ if(window.Feraytek && typeof window.Feraytek.go==="function"){ window.Feraytek.go("catalog"); } }},"Ir a productos")
+          React.createElement("button",{className:"btn primary",onClick:()=>{ if(window.Figureverse && typeof window.Figureverse.go==="function"){ window.Figureverse.go("catalog"); } }},"Ir a productos")
         )
       ) : React.createElement("div",{className:"catalog-grid"}, items.map((p,i)=>React.createElement("div",{key:(p.id||p.id_pedido||i)}, row(p))))),
       null,
       null
     );
   }
-  window.Feraytek = window.Feraytek || {};
-  window.Feraytek.OrderHistory = OrderHistory;
+  window.Figureverse = window.Figureverse || {};
+  window.Figureverse.OrderHistory = OrderHistory;
 })();

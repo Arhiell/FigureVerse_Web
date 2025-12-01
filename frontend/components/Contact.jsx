@@ -7,7 +7,7 @@
     function submit(e){ e&&e.preventDefault(); const ok = String(f.nombre).trim() && String(f.email).trim() && String(f.mensaje).trim(); if(!ok){ setMsg({type:"error",text:"Completa todos los campos"}); return; } setMsg({type:"ok",text:"Mensaje enviado"}); }
     return (
       React.createElement("div",{className:"catalog"},
-        React.createElement(window.Feraytek.Header,{}),
+        React.createElement(window.Figureverse.Header,{}),
         React.createElement("h1",{className:"page-title"},"Contacto"),
         msg?React.createElement("div",{className:`msg ${msg.type}`},msg.text):null,
         React.createElement("form",{className:"card",onSubmit:submit},
@@ -24,6 +24,6 @@
       )
     );
   }
-  window.Feraytek = window.Feraytek || {};
-  window.Feraytek.Contact = Contact;
+  window.Figureverse = window.Figureverse || {};
+  window.Figureverse.Contact = Contact;
 })();

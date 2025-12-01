@@ -1,6 +1,6 @@
 (function(){
   function getBase(){
-    const cfg = (typeof window!=="undefined" && window.Feraytek && window.Feraytek.API) || {};
+    const cfg = (typeof window!=="undefined" && window.Figureverse && window.Figureverse.API) || {};
     const b = cfg.base || "/api";
     if(/^https?:\/\//.test(b)) return b;
     return b; // se resolverá en absBase
@@ -37,7 +37,7 @@
   }
   let cachedRole = null;
   async function getRole(){
-    try{ const u0 = (window.Feraytek && window.Feraytek.usuario) || null; const r0 = u0 && (u0.rol||u0.role); if(r0){ cachedRole = r0; return r0; } }catch{}
+    try{ const u0 = (window.Figureverse && window.Figureverse.usuario) || null; const r0 = u0 && (u0.rol||u0.role); if(r0){ cachedRole = r0; return r0; } }catch{}
     if(cachedRole) return cachedRole;
     const base = getBase(); const abs = absBase();
     const urls1 = [ `${base}/auth/me`, `${abs}/auth/me` ];

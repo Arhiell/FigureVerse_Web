@@ -101,7 +101,7 @@
       try{
         await window.PaymentsController.pay({ id_pedido:pedidoId, descripcion:pagoDesc, monto_total:Number(pagoMonto||0) });
         setMsg({type:"ok",text:"Pago aprobado"});
-        setTimeout(()=>{ try{ if(window.Feraytek && typeof window.Feraytek.go==="function"){ window.Feraytek.go("landing"); } }catch{} }, 1200);
+        setTimeout(()=>{ try{ if(window.Figureverse && typeof window.Figureverse.go==="function"){ window.Figureverse.go("landing"); } }catch{} }, 1200);
       }catch(e){ setMsg({type:"error",text:e.message||"No se pudo procesar el pago"}); }
     }
 
@@ -216,7 +216,7 @@
 
     const titles = ["Datos de envío","Resumen","Pago"];
     return React.createElement("div",{className:"checkout-page"},
-      React.createElement(window.Feraytek.Header,{}),
+      React.createElement(window.Figureverse.Header,{}),
       React.createElement("div",{className:"checkout-wrap"},
       React.createElement("h1",{className:"page-title"},"Checkout"),
       React.createElement("div",{className:"stepper"},
@@ -234,6 +234,6 @@
       null
     );
   }
-  window.Feraytek = window.Feraytek || {};
-  window.Feraytek.Checkout = Checkout;
+  window.Figureverse = window.Figureverse || {};
+  window.Figureverse.Checkout = Checkout;
 })();

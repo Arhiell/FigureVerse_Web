@@ -7,48 +7,48 @@
     const [showSugg,setShowSugg] = useState(false);
     const [deb,setDeb] = useState(null);
     const [selIdx,setSelIdx] = useState(-1);
-    const [curr,setCurr] = useState((window.Feraytek && window.Feraytek.route) || "");
+    const [curr,setCurr] = useState((window.Figureverse && window.Figureverse.route) || "");
     const [logoOk,setLogoOk] = useState(true);
     const [cats,setCats] = useState(["Todos"]);
-    const [cat,setCat] = useState((window.Feraytek && window.Feraytek.category) || "Todos");
+    const [cat,setCat] = useState((window.Figureverse && window.Figureverse.category) || "Todos");
     useEffect(()=>{ try{ document.body.style.overflow = open?"hidden":""; }catch{} return ()=>{ try{ document.body.style.overflow=""; }catch{} }; },[open]);
-    useEffect(()=>{ function onRoute(ev){ const r=(ev&&ev.detail&&ev.detail.route)||""; setCurr(r); setShowSugg(false); } window.addEventListener("feraytek:route", onRoute); return ()=> window.removeEventListener("feraytek:route", onRoute); },[]);
-    function goHome(){ if(onNavHome) onNavHome(); else if(window.Feraytek && typeof window.Feraytek.go==="function") window.Feraytek.go("landing"); setOpen(false); }
-    function goProducts(){ if(onNavProducts) onNavProducts(); else if(window.Feraytek && typeof window.Feraytek.go==="function") window.Feraytek.go("catalog"); setOpen(false); }
-    function goOffers(){ if(onNavOffers) onNavOffers(); else if(window.Feraytek && typeof window.Feraytek.go==="function") window.Feraytek.go("offers"); setOpen(false); }
-    function goContact(){ if(onNavContact) onNavContact(); else if(window.Feraytek && typeof window.Feraytek.go==="function") window.Feraytek.go("contact"); setOpen(false); }
-    function goSupport(){ if(onNavSupport) onNavSupport(); else if(window.Feraytek && typeof window.Feraytek.go==="function") window.Feraytek.go("support"); setOpen(false); }
+    useEffect(()=>{ function onRoute(ev){ const r=(ev&&ev.detail&&ev.detail.route)||""; setCurr(r); setShowSugg(false); } window.addEventListener("Figureverse:route", onRoute); return ()=> window.removeEventListener("Figureverse:route", onRoute); },[]);
+    function goHome(){ if(onNavHome) onNavHome(); else if(window.Figureverse && typeof window.Figureverse.go==="function") window.Figureverse.go("landing"); setOpen(false); }
+    function goProducts(){ if(onNavProducts) onNavProducts(); else if(window.Figureverse && typeof window.Figureverse.go==="function") window.Figureverse.go("catalog"); setOpen(false); }
+    function goOffers(){ if(onNavOffers) onNavOffers(); else if(window.Figureverse && typeof window.Figureverse.go==="function") window.Figureverse.go("offers"); setOpen(false); }
+    function goContact(){ if(onNavContact) onNavContact(); else if(window.Figureverse && typeof window.Figureverse.go==="function") window.Figureverse.go("contact"); setOpen(false); }
+    function goSupport(){ if(onNavSupport) onNavSupport(); else if(window.Figureverse && typeof window.Figureverse.go==="function") window.Figureverse.go("support"); setOpen(false); }
     function goOrders(){
       if(onNavOrders){ onNavOrders(); setOpen(false); return; }
       try{
-        if(window.Feraytek && typeof window.Feraytek.requireLogin === "function"){
-          const ok = window.Feraytek.requireLogin(()=>window.Feraytek.go("orders"));
+        if(window.Figureverse && typeof window.Figureverse.requireLogin === "function"){
+          const ok = window.Figureverse.requireLogin(()=>window.Figureverse.go("orders"));
           if(!ok){ setOpen(false); return; }
-        } else if(window.Feraytek && typeof window.Feraytek.go === "function") {
-          window.Feraytek.go("orders");
+        } else if(window.Figureverse && typeof window.Figureverse.go === "function") {
+          window.Figureverse.go("orders");
         }
       } finally { setOpen(false); }
     }
     function goProfile(){
       if(onUserClick){ onUserClick(); setOpen(false); return; }
       try{
-        if(window.Feraytek && typeof window.Feraytek.requireLogin === "function"){
-          const ok = window.Feraytek.requireLogin(()=>window.Feraytek.go("profile"));
+        if(window.Figureverse && typeof window.Figureverse.requireLogin === "function"){
+          const ok = window.Figureverse.requireLogin(()=>window.Figureverse.go("profile"));
           if(!ok){ setOpen(false); return; }
-        } else if(window.Feraytek && typeof window.Feraytek.go === "function"){
-          window.Feraytek.go("profile");
+        } else if(window.Figureverse && typeof window.Figureverse.go === "function"){
+          window.Figureverse.go("profile");
         }
       } finally { setOpen(false); }
     }
-    function goCart(){ if(onCartClick) onCartClick(); else if(window.Feraytek && typeof window.Feraytek.go==="function") window.Feraytek.go("cart"); setOpen(false); }
+    function goCart(){ if(onCartClick) onCartClick(); else if(window.Figureverse && typeof window.Figureverse.go==="function") window.Figureverse.go("cart"); setOpen(false); }
     function goFav(){
       if(onFavClick) { onFavClick(); setOpen(false); return; }
       try{
-        if(window.Feraytek && typeof window.Feraytek.requireLogin === "function"){
-          const ok = window.Feraytek.requireLogin(()=>window.Feraytek.go("favorites"));
+        if(window.Figureverse && typeof window.Figureverse.requireLogin === "function"){
+          const ok = window.Figureverse.requireLogin(()=>window.Figureverse.go("favorites"));
           if(!ok){ setOpen(false); return; }
-        } else if(window.Feraytek && typeof window.Feraytek.go === "function") {
-          window.Feraytek.go("favorites");
+        } else if(window.Figureverse && typeof window.Figureverse.go === "function") {
+          window.Figureverse.go("favorites");
         }
       }finally{ setOpen(false); }
     }
@@ -83,14 +83,14 @@
           });
           const out=["Todos",...uniq];
           setCats(out);
-          const g=(window.Feraytek&&window.Feraytek.category)||"Todos";
+          const g=(window.Figureverse&&window.Figureverse.category)||"Todos";
           if(out.includes(g)) setCat(g);
         }catch{}
       })();
     },[]);
     function onCatChange(v){
       setCat(v);
-      try{ window.Feraytek.category = v; window.dispatchEvent(new CustomEvent("feraytek:category",{ detail:{ category:v } })); if(window.Feraytek && typeof window.Feraytek.go==="function") window.Feraytek.go("catalog"); }catch{}
+      try{ window.Figureverse.category = v; window.dispatchEvent(new CustomEvent("Figureverse:category",{ detail:{ category:v } })); if(window.Figureverse && typeof window.Figureverse.go==="function") window.Figureverse.go("catalog"); }catch{}
     }
     function clean(s){ try{ return String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,""); }catch{ return String(s||"").toLowerCase(); } }
     function score(name,q){ try{ const n=clean(name), qq=clean(q); if(!qq||!n) return 0; if(n.startsWith(qq)) return 100; if(n.includes(qq)) return 70; if(qq.length<=2){ let i=0; for(let c of qq){ const idx=n.indexOf(c,i); if(idx<0) return 0; i=idx+1; } return 50; } return 0; }catch{ return 0; } }
@@ -137,10 +137,10 @@
       try{ if(deb) clearTimeout(deb); }catch{}
       const t = setTimeout(()=> lookup(v), 200);
       setDeb(t);
-      if(!v || !v.trim()){ try{ window.Feraytek.searchQ = ""; window.dispatchEvent(new CustomEvent("feraytek:search",{ detail:{ q:"" } })); if(window.Feraytek && typeof window.Feraytek.go==="function") window.Feraytek.go("catalog"); }catch{} setShowSugg(false); }
+      if(!v || !v.trim()){ try{ window.Figureverse.searchQ = ""; window.dispatchEvent(new CustomEvent("Figureverse:search",{ detail:{ q:"" } })); if(window.Figureverse && typeof window.Figureverse.go==="function") window.Figureverse.go("catalog"); }catch{} setShowSugg(false); }
     }
-    function submit(){ if(onSearchSubmit) { onSearchSubmit(q); } else { try{ window.Feraytek.searchQ = q; window.dispatchEvent(new CustomEvent("feraytek:search",{ detail:{ q } })); if(window.Feraytek && typeof window.Feraytek.go==="function") window.Feraytek.go("catalog"); }catch{} setShowSugg(false); setSelIdx(-1); } }
-    function pickSuggestion(id){ try{ if(window.Feraytek && typeof window.Feraytek.go==="function"){ window.Feraytek.go("product",{ id }); } }catch{} setShowSugg(false); }
+    function submit(){ if(onSearchSubmit) { onSearchSubmit(q); } else { try{ window.Figureverse.searchQ = q; window.dispatchEvent(new CustomEvent("Figureverse:search",{ detail:{ q } })); if(window.Figureverse && typeof window.Figureverse.go==="function") window.Figureverse.go("catalog"); }catch{} setShowSugg(false); setSelIdx(-1); } }
+    function pickSuggestion(id){ try{ if(window.Figureverse && typeof window.Figureverse.go==="function"){ window.Figureverse.go("product",{ id }); } }catch{} setShowSugg(false); }
     function highlight(name){ try{ const v=String(q||"").trim().toLowerCase(); const n=String(name||""); if(!v||!n.toLowerCase().includes(v)) return n; const i=n.toLowerCase().indexOf(v); return React.createElement(React.Fragment,null, n.slice(0,i), React.createElement("span",{className:"match"}, n.slice(i,i+v.length) ), n.slice(i+v.length) ); }catch{ return name; } }
     function link(label,fn){ return React.createElement("a",{className:"menu-link",onClick:fn},label); }
     function cls(name){ return "menu-item" + (name?" ":"") + (name&&((name==="landing"&&curr==="landing")||(name==="catalog"&&(curr==="catalog"||curr==="product"))||(name==="offers"&&curr==="offers")||(name==="orders"&&curr==="orders")||(name==="contact"&&curr==="contact")||(name==="support"&&curr==="support"))?"active":""); }
@@ -150,9 +150,9 @@
           React.createElement("button",{className:"hamburger",onClick:()=>setOpen(o=>!o),title:"Menú","aria-label":"Abrir menú"},
             React.createElement("span",null),React.createElement("span",null),React.createElement("span",null)
           ),
-          React.createElement("button",{className:"logo",onClick:goHome,title:"Feraytek"},
-            logoOk?React.createElement("img",{className:"logo-pic",src:(window.Feraytek&&window.Feraytek.brandLogo)||"/img/logo1.jpeg",alt:"Feraytek",onError:()=>setLogoOk(false)}):null,
-            React.createElement("span",{className:"logo-title"},"Feraytek")
+          React.createElement("button",{className:"logo",onClick:goHome,title:"Figureverse"},
+            logoOk?React.createElement("img",{className:"logo-pic",src:(window.Figureverse&&window.Figureverse.brandLogo)||"/img/logo1.jpeg",alt:"Figureverse",onError:()=>setLogoOk(false)}):null,
+            React.createElement("span",{className:"logo-title"},"Figureverse")
           ),
           React.createElement("nav",{className:"menu"},
             React.createElement("a",{className:cls("landing"),onClick:goHome},"Inicio"),
@@ -208,6 +208,6 @@
       )
     );
   }
-  window.Feraytek = window.Feraytek || {};
-  window.Feraytek.Header = Header;
+  window.Figureverse = window.Figureverse || {};
+  window.Figureverse.Header = Header;
 })();

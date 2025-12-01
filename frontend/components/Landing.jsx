@@ -1,4 +1,4 @@
-// Feraytek UI - Componente Landing
+// Figureverse UI - Componente Landing
 // Responsabilidad: pantalla principal post‑autenticación con header full‑width,
 // hero dominante, slider simple y estética premium oscura acorde a la marca.
 
@@ -50,7 +50,7 @@
 
     return (
       React.createElement("div",{className:"landing"},
-        React.createElement(window.Feraytek.Header,{onUserClick:onGoProfile,onCartClick:onGoCart,onFavClick:()=>{ if(window.Feraytek){ if(typeof window.Feraytek.requireLogin === "function"){ window.Feraytek.requireLogin(()=>window.Feraytek.go("favorites")); } else { window.Feraytek.go("favorites"); } } },onNavProducts:onGoCatalog}),
+        React.createElement(window.Figureverse.Header,{onUserClick:onGoProfile,onCartClick:onGoCart,onFavClick:()=>{ if(window.Figureverse){ if(typeof window.Figureverse.requireLogin === "function"){ window.Figureverse.requireLogin(()=>window.Figureverse.go("favorites")); } else { window.Figureverse.go("favorites"); } } },onNavProducts:onGoCatalog}),
         React.createElement("div",{className:"hero"},
           React.createElement("div",{className:"banner"},
             React.createElement("div",{className:"hero-left"},
@@ -80,7 +80,7 @@
                 const img = p.url_imagen||p.imagen||p.image||p.img||frames[fi];
                 const name = p.nombre||p.title||p.name||"Producto";
                 const price = p.precio!=null?p.precio:(p.price!=null?p.price:"");
-                return React.createElement("button",{key:id,className:"feat-card",onClick:()=> window.Feraytek && typeof window.Feraytek.go==="function" && window.Feraytek.go("product",{id})},
+                return React.createElement("button",{key:id,className:"feat-card",onClick:()=> window.Figureverse && typeof window.Figureverse.go==="function" && window.Figureverse.go("product",{id})},
                   React.createElement("div",{className:"feat-img"},React.createElement("img",{src:img,alt:name})),
                   React.createElement("div",{className:"feat-info"},
                     React.createElement("div",{className:"feat-name"},name),
@@ -91,7 +91,7 @@
             )
           ),
           React.createElement("div",{className:"about"},
-            React.createElement("h3",{className:"about-title"},"Sobre Feraytek"),
+            React.createElement("h3",{className:"about-title"},"Sobre Figureverse"),
             React.createElement("div",{className:"about-grid"},
               React.createElement("div",{className:"about-card"},
                 React.createElement("div",{className:"about-head"},"Calidad garantizada"),
@@ -109,11 +109,11 @@
     );
   }
 
-  window.Feraytek = window.Feraytek || {};
-  window.Feraytek.Landing = Landing;
+  window.Figureverse = window.Figureverse || {};
+  window.Figureverse.Landing = Landing;
 })();
 
 // Comentarios:
 // - Header y hero amplificados para presencia visual y full‑width.
 // - Slider simple con flechas grandes (incremental) y 3 ítems destacados.
-// - CTA visible y coherente con paleta azul/celeste de Feraytek.
+// - CTA visible y coherente con paleta azul/celeste de Figureverse.

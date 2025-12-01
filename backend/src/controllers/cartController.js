@@ -157,7 +157,7 @@ export async function checkout(req,res){
 }
 function httpsGetJSON(url){
   return new Promise((resolve,reject)=>{
-    const req = https.get(url,{ headers:{ "Accept":"application/json", "User-Agent":"Feraytek/1.0" } },res=>{
+    const req = https.get(url,{ headers:{ "Accept":"application/json", "User-Agent":"Figureverse/1.0" } },res=>{
       let data=""; res.on("data",chunk=>data+=chunk);
       res.on("end",()=>{ try{ resolve(JSON.parse(data)); }catch(e){ reject(e); } });
     });
@@ -166,7 +166,7 @@ function httpsGetJSON(url){
 }
 async function fetchJSON(url){
   if(typeof fetch === "function"){
-    const r = await fetch(url,{ headers:{ "Accept":"application/json", "User-Agent":"Feraytek/1.0" } });
+    const r = await fetch(url,{ headers:{ "Accept":"application/json", "User-Agent":"Figureverse/1.0" } });
     return await r.json();
   }
   return await httpsGetJSON(url);

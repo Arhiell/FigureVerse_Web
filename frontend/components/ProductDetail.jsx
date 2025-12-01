@@ -35,7 +35,7 @@
               const idv = v0?.id_variante||v0?.variante_id||v0?.id;
               setVariante(idv||null);
             } else { setVariante(null); }
-            const base = (window.Feraytek && window.Feraytek.API && window.Feraytek.API.base) || "/api";
+            const base = (window.Figureverse && window.Figureverse.API && window.Figureverse.API.base) || "/api";
             let list = [];
             try{
               const r = await fetch(`${base}/imagenes_productos/producto/${productId}?t=${Date.now()}`,{ cache:"no-store" });
@@ -173,7 +173,7 @@
     }
     async function submitReview(){
       try{
-        if(window.Feraytek && typeof window.Feraytek.requireLogin === "function"){ const ok = window.Feraytek.requireLogin(()=>{}); if(!ok){ setMsg({type:"error",text:"Inicia sesión para reseñar"}); return; } }
+        if(window.Figureverse && typeof window.Figureverse.requireLogin === "function"){ const ok = window.Figureverse.requireLogin(()=>{}); if(!ok){ setMsg({type:"error",text:"Inicia sesión para reseñar"}); return; } }
         const rating = Math.min(5,Math.max(1,Number(myRating||5)));
         const comentario = String(myText||"").trim();
         await window.ProductController.addReview(productId,{ rating, comentario });
@@ -191,7 +191,7 @@
 
     return (
       React.createElement("div",{className:"product-detail"},
-        React.createElement(window.Feraytek.Header,{onNavProducts:onBack,onUserClick:()=>{ if(window.Feraytek && typeof window.Feraytek.requireLogin==="function"){ window.Feraytek.requireLogin(()=>window.Feraytek.go("profile")); } else if(window.Feraytek){ window.Feraytek.go("profile"); } },onCartClick:onGoCart,onFavClick:()=>{ if(window.Feraytek){ if(typeof window.Feraytek.requireLogin === "function"){ window.Feraytek.requireLogin(()=>window.Feraytek.go("favorites")); } else { window.Feraytek.go("favorites"); } } }}),
+        React.createElement(window.Figureverse.Header,{onNavProducts:onBack,onUserClick:()=>{ if(window.Figureverse && typeof window.Figureverse.requireLogin==="function"){ window.Figureverse.requireLogin(()=>window.Figureverse.go("profile")); } else if(window.Figureverse){ window.Figureverse.go("profile"); } },onCartClick:onGoCart,onFavClick:()=>{ if(window.Figureverse){ if(typeof window.Figureverse.requireLogin === "function"){ window.Figureverse.requireLogin(()=>window.Figureverse.go("favorites")); } else { window.Figureverse.go("favorites"); } } }}),
         React.createElement("div",{className:"detail-wrap"},
           React.createElement("button",{className:"btn secondary",onClick:onBack},"Volver al catálogo"),
           err?React.createElement("div",{className:"msg error"},err):null,
@@ -320,6 +320,6 @@
     );
   }
 
-  window.Feraytek = window.Feraytek || {};
-  window.Feraytek.ProductDetail = ProductDetail;
+  window.Figureverse = window.Figureverse || {};
+  window.Figureverse.ProductDetail = ProductDetail;
 })();

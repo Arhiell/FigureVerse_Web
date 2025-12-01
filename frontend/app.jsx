@@ -226,11 +226,11 @@ function App(){
   const [route,setRoute]=useState("landing");
   const [productId,setProductId]=useState(null);
   function logout(){try{sessionStorage.removeItem("token");localStorage.removeItem("token");}catch{} setUsuario(null)}
-  window.Feraytek = window.Feraytek || {};
-  window.Feraytek.API = window.Feraytek.API || { base:"/api" };
-  window.Feraytek.IMAGES = window.Feraytek.IMAGES || { base:"/static" };
+  window.Figureverse = window.Figureverse || {};
+  window.Figureverse.API = window.Figureverse.API || { base:"/api" };
+  window.Figureverse.IMAGES = window.Figureverse.IMAGES || { base:"/static" };
   
-  try{ window.Feraytek.usuario = usuario; }catch{}
+  try{ window.Figureverse.usuario = usuario; }catch{}
   React.useEffect(()=>{
     try{
       async function probe(u){ return await new Promise(r=>{ try{ const img=new Image(); img.onload=()=>r(true); img.onerror=()=>r(false); img.src=u; }catch{ r(false); } }); }
@@ -239,11 +239,11 @@ function App(){
         try{ const stored=localStorage.getItem("brandLogoUrl"); if(stored) cand.push(stored); }catch{}
         cand.push("/img/logo1.jpeg");
         cand.push("/img/logo2.jpeg");
-        for(let i=0;i<cand.length;i++){ const ok=await probe(cand[i]); if(ok){ window.Feraytek.brandLogo=cand[i]; break; } }
+        for(let i=0;i<cand.length;i++){ const ok=await probe(cand[i]); if(ok){ window.Figureverse.brandLogo=cand[i]; break; } }
       })();
     }catch{}
   },[]);
-  window.Feraytek.go = (r,params)=>{
+  window.Figureverse.go = (r,params)=>{
     try{
       const idRaw = params && (params.id||params.productId);
       const id = idRaw!=null? Number(idRaw) : null;
@@ -269,7 +269,7 @@ function App(){
     window.addEventListener("hashchange", applyHash);
     return ()=> window.removeEventListener("hashchange", applyHash);
   },[]);
-  React.useEffect(()=>{ try{ window.Feraytek.route = route; window.dispatchEvent(new CustomEvent("feraytek:route",{ detail:{ route } })); }catch{} },[route]);
+  React.useEffect(()=>{ try{ window.Figureverse.route = route; window.dispatchEvent(new CustomEvent("figureverse:route",{ detail:{ route } })); }catch{} },[route]);
   const [authBooting,setAuthBooting] = useState(true);
   React.useEffect(()=>{ try{ const s=localStorage.getItem("usuario"); if(s){ const u=JSON.parse(s); if(u && Object.keys(u).length) setUsuario(u); } }catch{} },[]);
   React.useEffect(()=>{
@@ -296,47 +296,47 @@ function App(){
   function handleLogged(u){ setUsuario(u); try{ localStorage.setItem("usuario", JSON.stringify(u||{})); }catch{} setTab(""); }
   function isSessionActive(){ try{ const tok=(sessionStorage.getItem("token")||localStorage.getItem("token")||""); return !!tok; }catch{ return false; } }
   function requireLogin(fn){ if(usuario && isSessionActive()){ if(typeof fn==="function") fn(); return true; } setTab("login"); return false; }
-  window.Feraytek.requireLogin = requireLogin;
-  window.Feraytek.logout = function(){ try{ localStorage.removeItem("token"); sessionStorage.removeItem("token"); }catch{} setUsuario(null); if(window.Feraytek && typeof window.Feraytek.go==="function"){ window.Feraytek.go("landing"); } else { setRoute("landing"); } };
+  window.Figureverse.requireLogin = requireLogin;
+  window.Figureverse.logout = function(){ try{ localStorage.removeItem("token"); sessionStorage.removeItem("token"); }catch{} setUsuario(null); if(window.Figureverse && typeof window.Figureverse.go==="function"){ window.Figureverse.go("landing"); } else { setRoute("landing"); } }; 
   return (
     React.createElement("div",{className:"wrap full"},
       tab==="login"?
         React.createElement("div",{className:"auth"},
           React.createElement("div",{className:"auth-grid"},
             React.createElement("div",{className:"auth-hero"},
-              React.createElement("div",{className:"brand-xl"},"Feraytek"),
+              React.createElement("div",{className:"brand-xl"},"Figureverse"),
               React.createElement("h2",{className:"auth-title"},"Bienvenido"),
               React.createElement("p",{className:"auth-sub"},"Accede para continuar con tus compras")
             ),
-            (window.Feraytek && window.Feraytek.Login?React.createElement(window.Feraytek.Login,{onLogged:handleLogged,onGoRegister:()=>setTab("register")}):React.createElement("div",{className:"msg error"},"No se pudo cargar Login"))
+            (window.Figureverse && window.Figureverse.Login?React.createElement(window.Figureverse.Login,{onLogged:handleLogged,onGoRegister:()=>setTab("register")}):React.createElement("div",{className:"msg error"},"No se pudo cargar Login"))
           )
         )
       : tab==="register"?
-        (window.Feraytek && window.Feraytek.Register?React.createElement(window.Feraytek.Register,{onLogged:handleLogged,onBackToLogin:()=>setTab("login")}):React.createElement("div",{className:"msg error"},"No se pudo cargar Registro"))
+        (window.Figureverse && window.Figureverse.Register?React.createElement(window.Figureverse.Register,{onLogged:handleLogged,onBackToLogin:()=>setTab("login")}):React.createElement("div",{className:"msg error"},"No se pudo cargar Registro"))
       :
       (route==="landing"?
-        React.createElement(window.Feraytek.Landing,{usuario,onGoProfile:()=>requireLogin(()=>window.Feraytek.go("profile")),onGoCatalog:()=>window.Feraytek.go("catalog"),onGoCart:()=>requireLogin(()=>window.Feraytek.go("cart"))})
+        React.createElement(window.Figureverse.Landing,{usuario,onGoProfile:()=>requireLogin(()=>window.Figureverse.go("profile")),onGoCatalog:()=>window.Figureverse.go("catalog"),onGoCart:()=>requireLogin(()=>window.Figureverse.go("cart"))})
         : route==="offers"?
-          (window.Feraytek && window.Feraytek.Offers?React.createElement(window.Feraytek.Offers,{}):React.createElement("div",{className:"msg error"},"No se pudo cargar Ofertas"))
+          (window.Figureverse && window.Figureverse.Offers?React.createElement(window.Figureverse.Offers,{}):React.createElement("div",{className:"msg error"},"No se pudo cargar Ofertas"))
         : route==="contact"?
-          (window.Feraytek && window.Feraytek.Contact?React.createElement(window.Feraytek.Contact,{}):React.createElement("div",{className:"msg error"},"No se pudo cargar Contacto"))
+          (window.Figureverse && window.Figureverse.Contact?React.createElement(window.Figureverse.Contact,{}):React.createElement("div",{className:"msg error"},"No se pudo cargar Contacto"))
         : route==="favorites"?
-          (window.Feraytek && window.Feraytek.Favorites? (usuario?React.createElement(window.Feraytek.Favorites,{}):(setTab("login"),React.createElement("div",null)) ) : React.createElement("div",{className:"msg error"},"No se pudo cargar Favoritos"))
+          (window.Figureverse && window.Figureverse.Favorites? (usuario?React.createElement(window.Figureverse.Favorites,{}):(setTab("login"),React.createElement("div",null)) ) : React.createElement("div",{className:"msg error"},"No se pudo cargar Favoritos"))
         : route==="profile"?
-          (window.Feraytek && window.Feraytek.Profile? React.createElement(window.Feraytek.Profile,{usuario,onBackHome:()=>{ if(window.Feraytek && typeof window.Feraytek.go==="function"){ window.Feraytek.go("landing"); } else { setRoute("landing"); } },onGoCart:()=>{ if(window.Feraytek && typeof window.Feraytek.go==="function"){ window.Feraytek.go("cart"); } else { setRoute("cart"); } }}) : React.createElement("div",{className:"msg error"},"No se pudo cargar Perfil"))
+          (window.Figureverse && window.Figureverse.Profile? React.createElement(window.Figureverse.Profile,{usuario,onBackHome:()=>{ if(window.Figureverse && typeof window.Figureverse.go==="function"){ window.Figureverse.go("landing"); } else { setRoute("landing"); } },onGoCart:()=>{ if(window.Figureverse && typeof window.Figureverse.go==="function"){ window.Figureverse.go("cart"); } else { setRoute("cart"); } }}) : React.createElement("div",{className:"msg error"},"No se pudo cargar Perfil"))
         : route==="catalog"?
-          (window.Feraytek && window.Feraytek.Catalog?React.createElement(window.Feraytek.Catalog,{onViewProduct:(id)=>window.Feraytek.go("product",{id}),onGoCart:()=>requireLogin(()=>window.Feraytek.go("cart"))}):React.createElement("div",{className:"msg error"},"No se pudo cargar Catálogo"))
+          (window.Figureverse && window.Figureverse.Catalog?React.createElement(window.Figureverse.Catalog,{onViewProduct:(id)=>window.Figureverse.go("product",{id}),onGoCart:()=>requireLogin(()=>window.Figureverse.go("cart"))}):React.createElement("div",{className:"msg error"},"No se pudo cargar Catálogo"))
         : route==="cart"?
-          (window.Feraytek && window.Feraytek.Cart? (usuario?React.createElement(window.Feraytek.Cart,{onBack:()=>window.Feraytek.go("catalog")}) : (setTab("login"), React.createElement("div",null)) ) : React.createElement("div",{className:"msg error"},"No se pudo cargar Carrito"))
+          (window.Figureverse && window.Figureverse.Cart? (usuario?React.createElement(window.Figureverse.Cart,{onBack:()=>window.Figureverse.go("catalog")}) : (setTab("login"), React.createElement("div",null)) ) : React.createElement("div",{className:"msg error"},"No se pudo cargar Carrito"))
         : route==="checkout"?
-          (window.Feraytek && window.Feraytek.Checkout? (usuario?React.createElement(window.Feraytek.Checkout,{}) : (setTab("login"), React.createElement("div",null)) ) : React.createElement("div",{className:"msg error"},"No se pudo cargar Checkout"))
+          (window.Figureverse && window.Figureverse.Checkout? (usuario?React.createElement(window.Figureverse.Checkout,{}) : (setTab("login"), React.createElement("div",null)) ) : React.createElement("div",{className:"msg error"},"No se pudo cargar Checkout"))
         : route==="support"?
-          (window.Feraytek && window.Feraytek.Support?React.createElement(window.Feraytek.Support,{}):React.createElement("div",{className:"msg error"},"No se pudo cargar Soporte"))
+          (window.Figureverse && window.Figureverse.Support?React.createElement(window.Figureverse.Support,{}):React.createElement("div",{className:"msg error"},"No se pudo cargar Soporte"))
           : route==="orders"?
-            (window.Feraytek && window.Feraytek.OrderHistory? (usuario?React.createElement(window.Feraytek.OrderHistory,{}) : (setTab("login"), React.createElement("div",null)) ) : React.createElement("div",{className:"msg error"},"No se pudo cargar Pedidos"))
-      : (window.Feraytek && window.Feraytek.ProductDetail?React.createElement(window.Feraytek.ProductDetail,{productId,onBack:()=>window.Feraytek.go("catalog"),onGoCart:()=>requireLogin(()=>window.Feraytek.go("cart"))}):React.createElement("div",{className:"msg error"},"No se pudo cargar Detalle"))
+            (window.Figureverse && window.Figureverse.OrderHistory? (usuario?React.createElement(window.Figureverse.OrderHistory,{}) : (setTab("login"), React.createElement("div",null)) ) : React.createElement("div",{className:"msg error"},"No se pudo cargar Pedidos"))
+      : (window.Figureverse && window.Figureverse.ProductDetail?React.createElement(window.Figureverse.ProductDetail,{productId,onBack:()=>window.Figureverse.go("catalog"),onGoCart:()=>requireLogin(()=>window.Figureverse.go("cart"))}):React.createElement("div",{className:"msg error"},"No se pudo cargar Detalle"))
       ),
-      ((tab!=="login" && tab!=="register")? (window.Feraytek && window.Feraytek.Footer?React.createElement(window.Feraytek.Footer,{}):null) : null)
+      ((tab!=="login" && tab!=="register")? (window.Figureverse && window.Figureverse.Footer?React.createElement(window.Figureverse.Footer,{}):null) : null)
     )
   );
 }
@@ -354,7 +354,7 @@ function Landing({usuario,onLogout,onGoCatalog,onGoProfile}){
   return (
     React.createElement("div",{className:"landing"},
       React.createElement("div",{className:"header"},
-        React.createElement("div",{className:"logo"},"Feraytek"),
+        React.createElement("div",{className:"logo"},"Figureverse"),
         React.createElement("nav",{className:"menu"},
           React.createElement("a",{className:"menu-item active"},"Inicio"),
           React.createElement("a",{className:"menu-item",onClick:onGoCatalog},"Productos"),
@@ -369,7 +369,7 @@ function Landing({usuario,onLogout,onGoCatalog,onGoProfile}){
           React.createElement("button",{className:"icon-btn",title:"Mi cuenta",onClick:onLogout},
             React.createElement("svg",{className:"ico",viewBox:"0 0 24 24",fill:"currentColor"},React.createElement("path",{d:"M12 12a5 5 0 1 0-0.001-10.001A5 5 0 0 0 12 12zm0 2c-4.418 0-8 2.239-8 5v2h16v-2c0-2.761-3.582-5-8-5z"}))
           ),
-          React.createElement("button",{className:"icon-btn",title:"Carrito",onClick:()=>{ if(window.Feraytek && typeof window.Feraytek.go==="function"){ window.Feraytek.go("cart"); } }},
+          React.createElement("button",{className:"icon-btn",title:"Carrito",onClick:()=>{ if(window.Figureverse && typeof window.Figureverse.go==="function"){ window.Figureverse.go("cart"); } }},
             React.createElement("svg",{className:"ico",viewBox:"0 0 24 24",fill:"currentColor"},React.createElement("path",{d:"M3 4h2l2 12h10l2-8H7"}))
           ),
           React.createElement("button",{className:"icon-btn",title:"Favoritos"},

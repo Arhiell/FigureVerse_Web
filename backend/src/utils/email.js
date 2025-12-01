@@ -12,8 +12,8 @@ export async function sendResetEmail(to, code){
     secure: Boolean(process.env.SMTP_SECURE === "true"),
     auth: process.env.SMTP_USER ? { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS } : undefined
   });
-  const from = process.env.SMTP_FROM || "no-reply@feraytek.local";
-  const subject = "Código de recuperación - Feraytek";
+  const from = process.env.SMTP_FROM || "no-reply@Figureverse.local";
+  const subject = "Código de recuperación - Figureverse";
   const text = `Tu código de recuperación es: ${code}\n\nCaduca en 10 minutos.`;
   await transporter.sendMail({ from, to, subject, text });
 }
@@ -30,8 +30,8 @@ export async function sendPasswordUpdatedEmail(to){
     secure: Boolean(process.env.SMTP_SECURE === "true"),
     auth: process.env.SMTP_USER ? { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS } : undefined
   });
-  const from = process.env.SMTP_FROM || "no-reply@feraytek.local";
-  const subject = "Contraseña actualizada - Feraytek";
+  const from = process.env.SMTP_FROM || "no-reply@Figureverse.local";
+  const subject = "Contraseña actualizada - Figureverse";
   const text = `Tu contraseña ha sido actualizada correctamente.`;
   await transporter.sendMail({ from, to, subject, text });
 }

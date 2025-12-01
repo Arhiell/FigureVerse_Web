@@ -5,7 +5,7 @@
 (function(){
   function computeImage(prod){
     const id = prod.id || prod.id_producto || prod.producto_id || prod.idProducto;
-    const baseImg = (window.Feraytek && window.Feraytek.IMAGES && window.Feraytek.IMAGES.base) || "";
+    const baseImg = (window.Figureverse && window.Figureverse.IMAGES && window.Figureverse.IMAGES.base) || "";
     if(prod.url_imagen) return prod.url_imagen;
     if(prod.imagen) return prod.imagen;
     if(prod.imagen_url) return prod.imagen_url;
@@ -17,7 +17,7 @@
     return "";
   }
   function getBase(){
-    const cfg = (typeof window!=="undefined" && window.Feraytek && window.Feraytek.API) || {};
+    const cfg = (typeof window!=="undefined" && window.Figureverse && window.Figureverse.API) || {};
     return cfg.base || "/api";
   }
   function absBase(){
@@ -39,7 +39,7 @@
     }catch{ return ""; }
   }
   function getToken(){ try{ return (sessionStorage.getItem("token")||localStorage.getItem("token")||cookieToken()||""); }catch{ return ""; } }
-  function useCookies(){ try{ return !!(window.Feraytek && window.Feraytek.AUTH_MODE === "cookie") || !!cookieToken(); }catch{ return !!cookieToken(); } }
+  function useCookies(){ try{ return !!(window.Figureverse && window.Figureverse.AUTH_MODE === "cookie") || !!cookieToken(); }catch{ return !!cookieToken(); } }
   function authInit(method){ const headers={}; const tok=getToken(); if(tok) headers["Authorization"]="Bearer "+tok; return { method:method||"GET", headers, credentials: useCookies()?"include":"omit", cache:"no-store" }; }
   async function tryFetch(urls, init){
     let last = null;

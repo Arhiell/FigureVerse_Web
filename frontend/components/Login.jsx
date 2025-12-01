@@ -1,10 +1,10 @@
-// Feraytek UI - Componente Login
+// Figureverse UI - Componente Login
 // Responsabilidad: renderizar el formulario de acceso con campos centrados, íconos
 // integrados, toggle de visibilidad de contraseña y manejo de autenticación.
 
 (function(){
   const { useState, useRef } = React;
-  const { useForm } = window.Feraytek;
+  const { useForm } = window.Figureverse;
 
   function Login({ onLogged, onGoRegister }){
     const f = useForm({ identifier: "", password: "" });
@@ -154,8 +154,8 @@
     return React.createElement("form",{className:"auth-card",id:"loginForm",onSubmit:(e)=>{e.preventDefault(); isLogin?submit():sendCode();}}, grid, errId, errPwd, actions, msgEl);
   }
 
-  window.Feraytek = window.Feraytek || {};
-  window.Feraytek.Login = Login;
+  window.Figureverse = window.Figureverse || {};
+  window.Figureverse.Login = Login;
 })();
 
 // Comentarios:

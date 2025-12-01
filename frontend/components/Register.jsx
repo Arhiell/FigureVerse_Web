@@ -1,10 +1,10 @@
-// Feraytek UI - Componente Registro por pasos
+// Figureverse UI - Componente Registro por pasos
 // Responsabilidad: presentar un registro dividido en 3 pasos lógicos para reducir
 // saturación visual, con validación progresiva, íconos integrados y acciones claras.
 
 (function(){
   const { useState } = React;
-  const { useForm, allowOnlyDigitsKeyDown } = window.Feraytek;
+  const { useForm, allowOnlyDigitsKeyDown } = window.Figureverse;
 
   function Register({ onLogged, onBackToLogin }){
     const f = useForm({
@@ -143,8 +143,8 @@
     );
   }
 
-  window.Feraytek = window.Feraytek || {};
-  window.Feraytek.Register = Register;
+  window.Figureverse = window.Figureverse || {};
+  window.Figureverse.Register = Register;
 })();
 
 // Comentarios:

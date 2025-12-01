@@ -1,10 +1,10 @@
 ;(function(){
   function getBase(){
-    const cfg = (typeof window!=="undefined" && window.Feraytek && window.Feraytek.API) || {};
+    const cfg = (typeof window!=="undefined" && window.Figureverse && window.Figureverse.API) || {};
     return cfg.base || "/api";
   }
   function buildPaths(){
-    const cfg = (typeof window!=="undefined" && window.Feraytek && window.Feraytek.API) || {};
+    const cfg = (typeof window!=="undefined" && window.Figureverse && window.Figureverse.API) || {};
     const base = getBase();
     return {
       list: cfg.cartList || `${base}/carrito`,
@@ -57,7 +57,7 @@
     const iva_porcentaje = item.iva_porcentaje!=null? Number(item.iva_porcentaje) : Number(item.iva??0);
     const payload = { id_producto, id_variante, cantidad, precio_unitario, iva_porcentaje };
     try{
-      const u = (typeof window!=="undefined" && window.Feraytek && window.Feraytek.usuario) || null;
+      const u = (typeof window!=="undefined" && window.Figureverse && window.Figureverse.usuario) || null;
       const id_usuario = u && (u.id_usuario||u.id||u.user_id);
       if(id_usuario!=null) payload.id_usuario = id_usuario;
     }catch{}
@@ -65,7 +65,7 @@
     const P = buildPaths();
     const res = await tryFetch([P.add],{ method:"POST", body, headers:{"Content-Type":"application/json"} });
     if(!(opts&&opts.silent)){
-      try{ const latest = await tryFetch([P.list],{ method:"GET" }); const detail = latest.items||latest.data||latest.carrito||latest; window.dispatchEvent(new CustomEvent("feraytek:cart-updated",{ detail })); }catch{}
+      try{ const latest = await tryFetch([P.list],{ method:"GET" }); const detail = latest.items||latest.data||latest.carrito||latest; window.dispatchEvent(new CustomEvent("Figureverse:cart-updated",{ detail })); }catch{}
     }
     return res;
   }
@@ -80,7 +80,7 @@
       try{
         const res = await tryFetch([P.updateItem],{ method:"PUT", body: body1, headers });
         if(!(opts&&opts.silent)){
-          try{ const latest = await tryFetch([P.list],{ method:"GET" }); const detail = latest.items||latest.data||latest.carrito||latest; window.dispatchEvent(new CustomEvent("feraytek:cart-updated",{ detail })); }catch{}
+          try{ const latest = await tryFetch([P.list],{ method:"GET" }); const detail = latest.items||latest.data||latest.carrito||latest; window.dispatchEvent(new CustomEvent("Figureverse:cart-updated",{ detail })); }catch{}
         }
         return res;
       }catch(e){
@@ -90,7 +90,7 @@
             const body2 = JSON.stringify({ cantidad });
             const res = await tryFetch([P.update(id)],{ method:"PATCH", body: body2, headers });
             if(!(opts&&opts.silent)){
-              try{ const latest = await tryFetch([P.list],{ method:"GET" }); const detail = latest.items||latest.data||latest.carrito||latest; window.dispatchEvent(new CustomEvent("feraytek:cart-updated",{ detail })); }catch{}
+              try{ const latest = await tryFetch([P.list],{ method:"GET" }); const detail = latest.items||latest.data||latest.carrito||latest; window.dispatchEvent(new CustomEvent("Figureverse:cart-updated",{ detail })); }catch{}
             }
             return res;
           }catch(e2){
@@ -104,7 +104,7 @@
             const addPayload = { producto_id:id_producto, cantidad:target, id_variante:id_variante, variante_id:id_variante, precio_unitario:itemOrId.precio_unitario, iva_porcentaje:itemOrId.iva_porcentaje };
             const res3 = await add(addPayload,{ silent:true });
             if(!(opts&&opts.silent)){
-              try{ const latest = await tryFetch([P.list],{ method:"GET" }); const detail = latest.items||latest.data||latest.carrito||latest; window.dispatchEvent(new CustomEvent("feraytek:cart-updated",{ detail })); }catch{}
+              try{ const latest = await tryFetch([P.list],{ method:"GET" }); const detail = latest.items||latest.data||latest.carrito||latest; window.dispatchEvent(new CustomEvent("Figureverse:cart-updated",{ detail })); }catch{}
             }
             return res3;
           }
@@ -116,7 +116,7 @@
       const body = JSON.stringify({ cantidad });
       const res = await tryFetch([P.update(id)],{ method:"PATCH", body, headers });
       if(!(opts&&opts.silent)){
-        try{ const latest = await tryFetch([P.list],{ method:"GET" }); const detail = latest.items||latest.data||latest.carrito||latest; window.dispatchEvent(new CustomEvent("feraytek:cart-updated",{ detail })); }catch{}
+        try{ const latest = await tryFetch([P.list],{ method:"GET" }); const detail = latest.items||latest.data||latest.carrito||latest; window.dispatchEvent(new CustomEvent("Figureverse:cart-updated",{ detail })); }catch{}
       }
       return res;
     }
@@ -129,14 +129,14 @@
     });
     const res = await tryFetch([P.removeItem],{ method:"DELETE", body, headers:{"Content-Type":"application/json"} });
     if(!(opts&&opts.silent)){
-      try{ const latest = await tryFetch([P.list],{ method:"GET" }); const detail = latest.items||latest.data||latest.carrito||latest; window.dispatchEvent(new CustomEvent("feraytek:cart-updated",{ detail })); }catch{}
+      try{ const latest = await tryFetch([P.list],{ method:"GET" }); const detail = latest.items||latest.data||latest.carrito||latest; window.dispatchEvent(new CustomEvent("Figureverse:cart-updated",{ detail })); }catch{}
     }
     return res;
   }
   async function clear(){
     const P = buildPaths();
     const res = await tryFetch([P.clear],{ method:"DELETE" });
-    try{ const latest = await tryFetch([P.list],{ method:"GET" }); const detail = latest.items||latest.data||latest.carrito||latest; window.dispatchEvent(new CustomEvent("feraytek:cart-updated",{ detail })); }catch{}
+    try{ const latest = await tryFetch([P.list],{ method:"GET" }); const detail = latest.items||latest.data||latest.carrito||latest; window.dispatchEvent(new CustomEvent("Figureverse:cart-updated",{ detail })); }catch{}
     return res;
   }
   async function configs(){

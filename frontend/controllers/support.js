@@ -1,6 +1,6 @@
 (function(){
   function getBase(){
-    const cfg = (typeof window!=="undefined" && window.Feraytek && window.Feraytek.API) || {};
+    const cfg = (typeof window!=="undefined" && window.Figureverse && window.Figureverse.API) || {};
     return cfg.base || "/api";
   }
   async function parse(r){
@@ -21,7 +21,7 @@
   async function create({ asunto, descripcion, prioridad }){
     const base = getBase();
     let uid = null;
-    try{ const u = (window.Feraytek && window.Feraytek.usuario) || null; uid = u && (u.id_usuario||u.id||u.user_id||u.usuario_id) || null; }catch{}
+    try{ const u = (window.Figureverse && window.Figureverse.usuario) || null; uid = u && (u.id_usuario||u.id||u.user_id||u.usuario_id) || null; }catch{}
     if(uid==null && window.AuthController && typeof window.AuthController.profile==="function"){
       try{ const me = await window.AuthController.profile(); const u = (me && (me.user||me.usuario||me.data)) || me; uid = u && (u.id_usuario||u.id||u.user_id||u.usuario_id) || null; }catch{}
     }

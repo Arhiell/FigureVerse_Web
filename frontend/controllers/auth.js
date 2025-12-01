@@ -1,6 +1,6 @@
 window.AuthController = (function(){
   function getBase(){
-    const cfg = (typeof window!=="undefined" && window.Feraytek && window.Feraytek.API) || {};
+    const cfg = (typeof window!=="undefined" && window.Figureverse && window.Figureverse.API) || {};
     return cfg.base || "/api";
   }
   function absBase(){
@@ -13,7 +13,7 @@ window.AuthController = (function(){
       const origin = window.location.origin || ""; return origin + (b.startsWith("/")? b : ("/"+b));
     }catch{ return b; }
   }
-  const useCookies = !!(window.Feraytek && window.Feraytek.AUTH_MODE === "cookie");
+  const useCookies = !!(window.Figureverse && window.Figureverse.AUTH_MODE === "cookie");
   async function parse(r){
     const ct = (r.headers.get("content-type")||"").toLowerCase();
     if(ct.includes("application/json")){

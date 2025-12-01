@@ -17,8 +17,8 @@
     const [listPage,setListPage] = useState(1);
     const pageSize = 6;
     function set(k,v){ setF(prev=>({...prev,[k]:v})); }
-    function isAdmin(){ try{ const r=(window.Feraytek && window.Feraytek.usuario && window.Feraytek.usuario.rol)||""; return /admin|superadmin/i.test(String(r)); }catch{ return false; } }
-    function ensureLogin(orMsg){ try{ if(window.Feraytek && typeof window.Feraytek.requireLogin==="function"){ const ok = window.Feraytek.requireLogin(()=>{}); if(!ok){ setErr(orMsg||"Debes iniciar sesión"); return false; } } }catch{} return true; }
+    function isAdmin(){ try{ const r=(window.Figureverse && window.Figureverse.usuario && window.Figureverse.usuario.rol)||""; return /admin|superadmin/i.test(String(r)); }catch{ return false; } }
+    function ensureLogin(orMsg){ try{ if(window.Figureverse && typeof window.Figureverse.requireLogin==="function"){ const ok = window.Figureverse.requireLogin(()=>{}); if(!ok){ setErr(orMsg||"Debes iniciar sesión"); return false; } } }catch{} return true; }
     async function submit(e){
       e&&e.preventDefault(); setMsg(null);
       if(!ensureLogin("Debes iniciar sesión para crear tickets")) return;
@@ -82,7 +82,7 @@
     const start = (listPage-1)*pageSize; const pageItems = items.slice(start, start+pageSize);
     return (
       React.createElement("div",{className:"catalog"},
-        React.createElement(window.Feraytek.Header,{}),
+        React.createElement(window.Figureverse.Header,{}),
         React.createElement("h1",{className:"page-title"},"Soporte y Reclamos"),
         msg?React.createElement("div",{className:`msg ${msg.type}`},msg.text):null,
         React.createElement("form",{className:"card",onSubmit:submit},
@@ -123,6 +123,6 @@
       )
     );
   }
-  window.Feraytek = window.Feraytek || {};
-  window.Feraytek.Support = Support;
+  window.Figureverse = window.Figureverse || {};
+  window.Figureverse.Support = Support;
 })();

@@ -7,7 +7,7 @@
     const [frames,setFrames] = useState([]);
     const [idx,setIdx] = useState(0);
     const timer = useRef(null);
-    const base = (window.Feraytek && window.Feraytek.API && window.Feraytek.API.base) || "/api";
+    const base = (window.Figureverse && window.Figureverse.API && window.Figureverse.API.base) || "/api";
     function uniq(arr){ const u=[]; arr.forEach(s=>{ if(s && !u.includes(s)) u.push(s); }); return u; }
     async function load(){
       let list=[]; try{ const r=await fetch(`${base}/imagenes_productos/producto/${id}?t=${Date.now()}`,{ cache:"no-store" }); const j=await r.json(); list = Array.isArray(j)?j:(j.items||j.data||[]); }catch{}
@@ -35,6 +35,6 @@
       )
     );
   }
-  window.Feraytek = window.Feraytek || {};
-  window.Feraytek.ProductCard = ProductCard;
+  window.Figureverse = window.Figureverse || {};
+  window.Figureverse.ProductCard = ProductCard;
 })();

@@ -1,4 +1,4 @@
-             Feraytek-API 
+             Figureverse-API 
 
 Funcionalidades Públicas (sin autenticación) 
 
@@ -72,7 +72,7 @@ Metodo PUT: http://localhost:3000/api/users/profile, Content-Type / application/
 
 } 
 
-Metodo PUT: http://localhost:3000/api/users/password, Content-Type / application/Json, authorization bearer el_token. (cambiar contraseña con confirmacion por email Asunto: Contraseña actualizada - Feraytek 
+Metodo PUT: http://localhost:3000/api/users/password, Content-Type / application/Json, authorization bearer el_token. (cambiar contraseña con confirmacion por email Asunto: Contraseña actualizada - Figureverse 
 
 { 
 
@@ -104,13 +104,13 @@ Detalles del cambio:
 
 Si no fuiste tú quien realizó este cambio,  
 
-contacta inmediatamente a soporte@feraytek.com 
+contacta inmediatamente a soporte@Figureverse.com 
 
   
 
 Saludos, 
 
-Equipo Feraytek) 
+Equipo Figureverse) 
 
 Metodo POST: http://localhost:3000/api/auth/forgot-password,  Content-Type / application/Json (este endpoint solicita un codigo que se le envia al gmail cuando olvida su contraseña) 
 
@@ -330,7 +330,7 @@ Metodo PUT: http://localhost:3000/api/users/profile/admin/9, Content-Type / appl
 
   "apellido": "Fernandez",  
 
-  "email": "claudia.fer@feraytek.com", 
+  "email": "claudia.fer@Figureverse.com", 
 
   "telefono": "+54 11 1234-5678" 
 
@@ -532,7 +532,7 @@ Metodo POST: http://localhost:3000/api/pagos, Content-Type / application/Json, a
 
   "id_pedido": 17, 
 
-  "descripcion": "Compra de productos Feraytek", 
+  "descripcion": "Compra de productos Figureverse", 
 
   "monto_total": 1000.00 
 

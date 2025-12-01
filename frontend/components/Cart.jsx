@@ -23,11 +23,11 @@
         if(mounted) setLoading(false);
       })();
       async function onUpdated(ev){ const data = ev.detail; const arr = Array.isArray(data)?data:(Array.isArray(data?.items)?data.items:[]); const enriched = await enrichItems(Array.isArray(arr)?arr:[]); setItems(enriched); }
-      window.addEventListener("feraytek:cart-updated", onUpdated);
-      return ()=>{ mounted=false; window.removeEventListener("feraytek:cart-updated", onUpdated); };
+      window.addEventListener("figureverse:cart-updated", onUpdated);
+      return ()=>{ mounted=false; window.removeEventListener("figureverse:cart-updated", onUpdated); };
     },[]);
 
-    function getApiBase(){ const cfg=(typeof window!=="undefined"&&window.Feraytek&&window.Feraytek.API)||{}; return cfg.base||"/api"; }
+    function getApiBase(){ const cfg=(typeof window!=="undefined"&&window.Figureverse&&window.Figureverse.API)||{}; return cfg.base||"/api"; }
     function priceOf(it){ const p = it.precio_base??it.precio??it.price??0; return Number(p); }
     function ivaPct(it){ const v = it.iva_porcentaje??it.iva??0; return Number(v)||0; }
     const totals = items.reduce((acc,it)=>{ const q=Number(it.cantidad||1); const p=priceOf(it); const iva=ivaPct(it); const sub=p*q; const ivaVal=sub*(iva/100); acc.sub+=sub; acc.iva+=ivaVal; acc.total+=sub+ivaVal; return acc; },{sub:0,iva:0,total:0});
@@ -58,7 +58,7 @@
       }catch{ return ""; }
     }
     async function enrichItems(arr){
-      const baseImg = (window.Feraytek && window.Feraytek.IMAGES && window.Feraytek.IMAGES.base) || "";
+      const baseImg = (window.Figureverse && window.Figureverse.IMAGES && window.Figureverse.IMAGES.base) || "";
       const tasks = (Array.isArray(arr)?arr:[]).map(async it=>{
         const nested = it.producto||{};
         const id = it.id_producto||it.producto_id||it.id||it.idProducto||nested.id||nested.id_producto||nested.producto_id;
@@ -119,13 +119,13 @@
       React.createElement("div",{className:"row"},React.createElement("div",{style:{fontWeight:700}},"Total"),React.createElement("div",{style:{fontWeight:700}},`$${totals.total.toFixed(2)}`)),
       React.createElement("div",{className:"action-bar"},
         React.createElement("button",{className:"btn secondary",onClick:onBack},"Seguir comprando"),
-        React.createElement("button",{className:"btn primary",onClick:()=>{ if(window.Feraytek) window.Feraytek.go("checkout"); }},"Finalizar compra")
+        React.createElement("button",{className:"btn primary",onClick:()=>{ if(window.Figureverse) window.Figureverse.go("checkout"); }},"Finalizar compra")
       )
     );
     const content = items.length ? React.createElement("div",null,list,summary) : React.createElement("div",{className:"msg"},"Tu carrito está vacío");
 
     return React.createElement("div",{className:"cart-page"},
-      React.createElement(window.Feraytek.Header,{onNavProducts:()=>{},onUserClick:()=>{ if(window.Feraytek && typeof window.Feraytek.requireLogin==="function"){ window.Feraytek.requireLogin(()=>window.Feraytek.go("profile")); } else if(window.Feraytek){ window.Feraytek.go("profile"); } },onCartClick:()=>{},onFavClick:()=>{ if(window.Feraytek){ if(typeof window.Feraytek.requireLogin === "function"){ window.Feraytek.requireLogin(()=>window.Feraytek.go("favorites")); } else { window.Feraytek.go("favorites"); } } }}),
+      React.createElement(window.Figureverse.Header,{onNavProducts:()=>{},onUserClick:()=>{ if(window.Figureverse && typeof window.Figureverse.requireLogin==="function"){ window.Figureverse.requireLogin(()=>window.Figureverse.go("profile")); } else if(window.Figureverse){ window.Figureverse.go("profile"); } },onCartClick:()=>{},onFavClick:()=>{ if(window.Figureverse){ if(typeof window.Figureverse.requireLogin === "function"){ window.Figureverse.requireLogin(()=>window.Figureverse.go("favorites")); } else { window.Figureverse.go("favorites"); } } }}),
       React.createElement("div",{className:"cart-wrap"},
         React.createElement("h1",{className:"page-title"},"Carrito"),
         err?React.createElement("div",{className:"msg error"},err):null,
@@ -134,6 +134,6 @@
       null
     );
   }
-  window.Feraytek = window.Feraytek || {};
-  window.Feraytek.Cart = Cart;
+  window.Figureverse = window.Figureverse || {};
+  window.Figureverse.Cart = Cart;
 })();

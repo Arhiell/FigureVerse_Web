@@ -5,8 +5,8 @@
       React.createElement("div",{className:"footer-wrap"},
         React.createElement("div",{className:"footer-grid"},
           React.createElement("div",{className:"footer-brand"},
-            React.createElement("img",{className:"footer-logo",src:"/img/logo1.jpeg",alt:"Feraytek"}),
-            React.createElement("span",{className:"footer-title"},"Feraytek")
+            React.createElement("img",{className:"footer-logo",src:"/img/logo1.jpeg",alt:"Figureverse"}),
+            React.createElement("span",{className:"footer-title"},"Figureverse")
           ),
           React.createElement("div",{className:"footer-contact"},
             React.createElement("div",{className:"contact-row"},
@@ -20,7 +20,7 @@
               ),
               React.createElement("div",{className:"contact-item"},
                 React.createElement("svg",{className:"contact-ico",viewBox:"0 0 24 24",fill:"currentColor"},React.createElement("path",{d:"M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm-1.5 4L12 12.5 5.5 8H18.5z"})),
-                React.createElement("a",{href:"mailto:feraytek@gmail.com"},"feraytek@gmail.com")
+                React.createElement("a",{href:"mailto:Figureverse@gmail.com"},"Figureverse@gmail.com")
               )
             )
           ),
@@ -48,10 +48,10 @@
             React.createElement("a",{className:"footer-link near-social",href:"#support"},"Soporte")
           )
         ),
-        React.createElement("div",{className:"footer-note"},`Feraytek — ${year} · Derechos reservados`)
+        React.createElement("div",{className:"footer-note"},`Figureverse — ${year} · Derechos reservados`)
       )
     );
   }
-  window.Feraytek = window.Feraytek || {};
-  window.Feraytek.Footer = Footer;
+  window.Figureverse = window.Figureverse || {};
+  window.Figureverse.Footer = Footer;
 })();

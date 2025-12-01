@@ -52,11 +52,11 @@
         loading?React.createElement("div",{className:"msg"},"Cargando..."):
         items.length===0?React.createElement("div",{className:"msg"},"No hay productos"):
         React.createElement("div",{className:"catalog-grid"},
-          items.map(p=>React.createElement(window.Feraytek.ProductCard,{key:(p.id||p.nombre),product:p,onView:onViewProduct,onAdd:add}))
+          items.map(p=>React.createElement(window.Figureverse.ProductCard,{key:(p.id||p.nombre),product:p,onView:onViewProduct,onAdd:add}))
         )
       )
     );
   }
-  window.Feraytek = window.Feraytek || {};
-  window.Feraytek.ProductGrid = ProductGrid;
+  window.Figureverse = window.Figureverse || {};
+  window.Figureverse.ProductGrid = ProductGrid;
 })();

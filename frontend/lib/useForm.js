@@ -1,7 +1,7 @@
-// Feraytek UI - Módulo de formularios y etiquetas
+// Figureverse UI - Módulo de formularios y etiquetas
 // Responsabilidad: proveer utilidades de manejo de estado de formularios, validación
 // y etiquetas legibles para los distintos campos utilizados en Login y Registro.
-// Este archivo expone una API en el espacio global `window.Feraytek` para ser
+// Este archivo expone una API en el espacio global `window.Figureverse` para ser
 // consumida por componentes declarados en archivos separados sin usar bundlers.
 
 (function(){
@@ -82,10 +82,10 @@
   }
 
   // Exponer API global
-  window.Feraytek = window.Feraytek || {};
-  window.Feraytek.labels = labels;
-  window.Feraytek.useForm = useForm;
-  window.Feraytek.allowOnlyDigitsKeyDown = allowOnlyDigitsKeyDown;
+  window.Figureverse = window.Figureverse || {};
+  window.Figureverse.labels = labels;
+  window.Figureverse.useForm = useForm;
+  window.Figureverse.allowOnlyDigitsKeyDown = allowOnlyDigitsKeyDown;
 })();
 
 // Comentarios adicionales:

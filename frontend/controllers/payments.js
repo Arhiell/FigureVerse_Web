@@ -1,6 +1,6 @@
 ;(function(){
   function getBase(){
-    const cfg = (typeof window!=="undefined" && window.Feraytek && window.Feraytek.API) || {};
+    const cfg = (typeof window!=="undefined" && window.Figureverse && window.Figureverse.API) || {};
     return cfg.base || "/api";
   }
   async function parse(r){

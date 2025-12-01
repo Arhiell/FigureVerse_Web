@@ -1,6 +1,6 @@
 (function(){
   const { useState, useEffect, useRef } = React;
-  const { useForm, allowOnlyDigitsKeyDown } = window.Feraytek;
+  const { useForm, allowOnlyDigitsKeyDown } = window.Figureverse;
   function Profile({ usuario, onBackHome, onGoCart }){
     function toDateValue(x){
       if(!x) return "";
@@ -163,7 +163,7 @@
     if(booting){
       return (
         React.createElement("div",{className:"profile"},
-          React.createElement(window.Feraytek.Header,{onUserClick:()=>{},onCartClick:onGoCart,onFavClick:()=>{ if(window.Feraytek){ if(typeof window.Feraytek.requireLogin === "function"){ window.Feraytek.requireLogin(()=>window.Feraytek.go("favorites")); } else { window.Feraytek.go("favorites"); } } }}),
+          React.createElement(window.Figureverse.Header,{onUserClick:()=>{},onCartClick:onGoCart,onFavClick:()=>{ if(window.Figureverse){ if(typeof window.Figureverse.requireLogin === "function"){ window.Figureverse.requireLogin(()=>window.Figureverse.go("favorites")); } else { window.Figureverse.go("favorites"); } } }}),
           React.createElement("div",{className:"profile-wrap"},
             React.createElement("div",{className:"profile-card"},
               React.createElement("h2",{className:"page-title"},"Editar perfil"),
@@ -203,7 +203,7 @@
     }
     return (
       React.createElement("div",{className:"profile"},
-        React.createElement(window.Feraytek.Header,{onUserClick:()=>{},onCartClick:onGoCart,onFavClick:()=>{ if(window.Feraytek){ if(typeof window.Feraytek.requireLogin === "function"){ window.Feraytek.requireLogin(()=>window.Feraytek.go("favorites")); } else { window.Feraytek.go("favorites"); } } }}),
+        React.createElement(window.Figureverse.Header,{onUserClick:()=>{},onCartClick:onGoCart,onFavClick:()=>{ if(window.Figureverse){ if(typeof window.Figureverse.requireLogin === "function"){ window.Figureverse.requireLogin(()=>window.Figureverse.go("favorites")); } else { window.Figureverse.go("favorites"); } } }}),
         React.createElement("div",{className:"profile-wrap"},
           React.createElement("div",{className:"profile-card"},
             React.createElement("h2",{className:"page-title"},"Editar perfil"),
@@ -275,7 +275,7 @@
             React.createElement("div",{className:"action-bar"},
               React.createElement("button",{className:"btn secondary",onClick:cancel},"Cancelar"),
               React.createElement("button",{className:"btn primary",onClick:openConfirm},"Guardar cambios"),
-              React.createElement("button",{className:"btn secondary",onClick:()=>{ try{ window.Feraytek && typeof window.Feraytek.logout==="function"? window.Feraytek.logout() : (sessionStorage.removeItem("token"), localStorage.removeItem("session_exp"), window.Feraytek && window.Feraytek.go && window.Feraytek.go("landing")); }catch{} }},"Cerrar sesión")
+              React.createElement("button",{className:"btn secondary",onClick:()=>{ try{ window.Figureverse && typeof window.Figureverse.logout==="function"? window.Figureverse.logout() : (sessionStorage.removeItem("token"), localStorage.removeItem("session_exp"), window.Figureverse && window.Figureverse.go && window.Figureverse.go("landing")); }catch{} }},"Cerrar sesión")
             ),
             null
           ),
@@ -300,6 +300,6 @@
       )
     );
   }
-  window.Feraytek = window.Feraytek || {};
-  window.Feraytek.Profile = Profile;
+  window.Figureverse = window.Figureverse || {};
+  window.Figureverse.Profile = Profile;
 })();

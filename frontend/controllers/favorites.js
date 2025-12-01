@@ -3,7 +3,7 @@
     try{ const raw = localStorage.getItem("favProducts")||"[]"; const arr = JSON.parse(raw); return Array.isArray(arr)?arr:[]; }catch{ return []; }
   }
   function write(list){
-    try{ localStorage.setItem("favProducts", JSON.stringify(list)); window.dispatchEvent(new CustomEvent("feraytek:fav-updated",{ detail:{ list } })); }catch{}
+    try{ localStorage.setItem("favProducts", JSON.stringify(list)); window.dispatchEvent(new CustomEvent("Figureverse:fav-updated",{ detail:{ list } })); }catch{}
   }
   function normalize(p){
     if(!p) return null;

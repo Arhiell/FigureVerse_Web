@@ -74,7 +74,7 @@
       const name = p.nombre||p.title||p.name||"Producto";
       const price = priceOf(p);
       return React.createElement("div",{className:"product-card"},
-        React.createElement("div",{className:"img-wrap hoverable",onClick:()=>{ if(window.Feraytek) window.Feraytek.go("product",{ id }); }},
+        React.createElement("div",{className:"img-wrap hoverable",onClick:()=>{ if(window.Figureverse) window.Figureverse.go("product",{ id }); }},
           React.createElement("img",{src:img,alt:name,onError:(e)=>{try{const u=new URL(e.target.src);if(u.pathname.endsWith(".jpg")){u.pathname=u.pathname.replace(/\.jpg$/,".png");e.target.src=u.toString();return;} }catch{} e.target.src="https://placehold.co/600x400?text=Oferta";}})
         ),
         React.createElement("div",{className:"info"},
@@ -82,14 +82,14 @@
           React.createElement("div",{className:"price"}, price!==""?`$${price}`:"")
         ),
         React.createElement("div",{className:"actions"},
-          React.createElement("button",{className:"btn primary",onClick:()=>{ if(window.Feraytek) window.Feraytek.go("product",{ id }); }},"Ver detalles")
+          React.createElement("button",{className:"btn primary",onClick:()=>{ if(window.Figureverse) window.Figureverse.go("product",{ id }); }},"Ver detalles")
         )
       );
     }
 
     return (
       React.createElement("div",{className:"catalog"},
-        React.createElement(window.Feraytek.Header,{}),
+        React.createElement(window.Figureverse.Header,{}),
         React.createElement("div",{className:"catalog-top"},
           React.createElement("h1",{className:"page-title"},"Ofertas")
         ),
@@ -100,6 +100,6 @@
       )
     );
   }
-  window.Feraytek = window.Feraytek || {};
-  window.Feraytek.Offers = Offers;
+  window.Figureverse = window.Figureverse || {};
+  window.Figureverse.Offers = Offers;
 })();
