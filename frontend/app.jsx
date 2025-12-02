@@ -304,7 +304,7 @@ function App(){
         React.createElement("div",{className:"auth"},
           React.createElement("div",{className:"auth-grid"},
             React.createElement("div",{className:"auth-hero"},
-              React.createElement("div",{className:"brand-xl"},"Feraytek"),
+              React.createElement("div",{className:"brand-xl"},"Figure Verse"),
               React.createElement("h2",{className:"auth-title"},"Bienvenido"),
               React.createElement("p",{className:"auth-sub"},"Accede para continuar con tus compras")
             ),
@@ -354,7 +354,7 @@ function Landing({usuario,onLogout,onGoCatalog,onGoProfile}){
   return (
     React.createElement("div",{className:"landing"},
       React.createElement("div",{className:"header"},
-        React.createElement("div",{className:"logo"},"Feraytek"),
+        React.createElement("div",{className:"logo"},"Figure Verse"),
         React.createElement("nav",{className:"menu"},
           React.createElement("a",{className:"menu-item active"},"Inicio"),
           React.createElement("a",{className:"menu-item",onClick:onGoCatalog},"Productos"),

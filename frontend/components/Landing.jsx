@@ -7,7 +7,7 @@
 
   function Landing({ usuario, onGoProfile, onGoCatalog, onGoCart }){
     const items=[
-      {title:"Todo en Tecnología",subtitle:"Smartphones, audio, accesorios y mucho más — la mejor calidad y lo último en tecnología."}
+      {title:"Todo en Cultura Pop",subtitle:"Manga, figuras, anime, cómics y coleccionables — todo en un solo lugar."}
     ];
     const [i,setI]=useState(0);
     const [frames,setFrames]=useState([]);
@@ -91,17 +91,17 @@
             )
           ),
           React.createElement("div",{className:"about"},
-            React.createElement("h3",{className:"about-title"},"Sobre Feraytek"),
+            React.createElement("h3",{className:"about-title"},"Sobre Figure Verse"),
             React.createElement("div",{className:"about-grid"},
               React.createElement("div",{className:"about-card"},
-                React.createElement("div",{className:"about-head"},"Calidad garantizada"),
-                React.createElement("p",{className:"about-text"},"Productos originales con garantía oficial y soporte dedicado.")),
+                React.createElement("div",{className:"about-head"},"Productos oficiales"),
+                React.createElement("p",{className:"about-text"},"Figuras, tomos y merch originales para coleccionistas.")),
               React.createElement("div",{className:"about-card"},
                 React.createElement("div",{className:"about-head"},"Envíos a todo el país"),
-                React.createElement("p",{className:"about-text"},"Logística confiable y seguimiento en tiempo real.")),
+                React.createElement("p",{className:"about-text"},"Empaques seguros y seguimiento en tiempo real.")),
               React.createElement("div",{className:"about-card"},
                 React.createElement("div",{className:"about-head"},"Atención especializada"),
-                React.createElement("p",{className:"about-text"},"Asesoría en elección y posventa por expertos."))
+                React.createElement("p",{className:"about-text"},"Te ayudamos a elegir la pieza ideal para tu colección."))
             )
           )
         )

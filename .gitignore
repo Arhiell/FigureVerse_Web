@@ -19,3 +19,4 @@ backend/backend/dev.sqlite
 .env.*
 Thumbs.db
 .cache/
+endpoints

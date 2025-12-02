@@ -5,8 +5,8 @@
       React.createElement("div",{className:"footer-wrap"},
         React.createElement("div",{className:"footer-grid"},
           React.createElement("div",{className:"footer-brand"},
-            React.createElement("img",{className:"footer-logo",src:"/img/logo1.jpeg",alt:"Feraytek"}),
-            React.createElement("span",{className:"footer-title"},"Feraytek")
+            React.createElement("img",{className:"footer-logo",src:"/img/logo1.jpeg",alt:"Figure Verse"}),
+            React.createElement("span",{className:"footer-title"},"Figure Verse")
           ),
           React.createElement("div",{className:"footer-contact"},
             React.createElement("div",{className:"contact-row"},
@@ -48,7 +48,7 @@
             React.createElement("a",{className:"footer-link near-social",href:"#support"},"Soporte")
           )
         ),
-        React.createElement("div",{className:"footer-note"},`Feraytek — ${year} · Derechos reservados`)
+        React.createElement("div",{className:"footer-note"},`Figure Verse — ${year} · Derechos reservados`)
       )
     );
   }
