@@ -10,11 +10,31 @@
   </p>
 </div>
 
+<p align="center">
+  <img alt="Node.js" src="https://img.shields.io/badge/Node.js-18+-3C873A?logo=node.js&logoColor=white" />
+  <img alt="Express" src="https://img.shields.io/badge/Express-API-black?logo=express&logoColor=white" />
+  <img alt="React" src="https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=061A23" />
+  <img alt="Sequelize" src="https://img.shields.io/badge/Sequelize-ORM-52B0E7?logo=sequelize&logoColor=white" />
+  <img alt="SQLite" src="https://img.shields.io/badge/SQLite-DB-003B57?logo=sqlite&logoColor=white" />
+  <img alt="MySQL" src="https://img.shields.io/badge/MySQL-Optional-4479A1?logo=mysql&logoColor=white" />
+  <img alt="JWT" src="https://img.shields.io/badge/JWT-Auth-000000?logo=jsonwebtokens&logoColor=white" />
+  <img alt="Nodemailer" src="https://img.shields.io/badge/Nodemailer-Email-44CC11?logo=gmail&logoColor=white" />
+</p>
+
 ## Visión General
 
 - Plataforma orientada a ventas de productos del mundo otaku y cultura pop: 📚 manga, 🎎 figuras, 🎬 anime, 🦸 cómics y 🎮 gaming.
 - Arquitectura modular: Frontend en React UMD con servidor estático y proxy; Backend en Node/Express con ORM Sequelize; integración de pagos, carrito, pedidos y soporte.
 - Branding del sitio: `Figure Verse` (actualizado en la UI, cabecera y pie de página).
+
+## Repositorios
+
+| Proyecto   | Enlace                                             | Descripción breve                                                         | Icono |
+| ---------- | -------------------------------------------------- | ------------------------------------------------------------------------- | ----- |
+| Web        | https://github.com/Arhiell/FigureVerse_Web         | Frontend SPA en React UMD con servidor estático y proxy a la API.         | 🖥️    |
+| Escritorio | https://github.com/BautiC-9/FigureVerse-Escritorio | Cliente de escritorio complementario para gestión y soporte.              | 🧩    |
+| API Node   | https://github.com/Arhiell/FigureVerse-API         | API REST en Node.js/Express con Sequelize, auth JWT y módulos de negocio. | ⚙️    |
+| API Python | https://github.com/Arhiell/FigureVerse_API_Python  | Servicios y utilidades complementarias en Python para tareas específicas. | 🐍    |
 
 ## Stack Tecnológico
 
@@ -191,12 +211,13 @@ export const sequelize = new Sequelize({
 
 ## Mantenimiento y Extensiones
 
-- Migrar a MySQL/MariaDB en producción (ver guía).
-- Integrar pasarela de pago real (Mercado Pago/Stripe) reemplazando `paymentsController`.
-- Agregar panel admin (web/escritorio) sobre rutas existentes de ABM y reportes.
+## Datos Académicos y Autores
 
-## Créditos
+| Institución                         | Carrera                            | Cátedras                                                 |
+| ----------------------------------- | ---------------------------------- | -------------------------------------------------------- |
+| UTN – Facultad Regional Resistencia | Tec. Universitario en Programación | Python (Goya, Juan Manuel) · JavaScript (Puljiz, Emilio) |
 
-- UTN – Facultad Regional Resistencia – Tec. Universitario en Programación.
-- Autores: Ayala, Ariel · Capovilla, Bautista.
-- Cátedra: Python (Goya, Juan Manuel) · JavaScript (Puljiz, Emilio).
+| Autor               | Perfil                      | Rol                                   |
+| ------------------- | --------------------------- | ------------------------------------- |
+| Ayala, Ariel        | https://github.com/Arhiell  | Desarrollo Web/API · Arquitectura     |
+| Capovilla, Bautista | https://github.com/BautiC-9 | Desarrollo Escritorio · Integraciones |
