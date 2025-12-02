@@ -32,7 +32,7 @@
 | Proyecto   | Enlace                                             | Descripción breve                                                         | Icono |
 | ---------- | -------------------------------------------------- | ------------------------------------------------------------------------- | ----- |
 | Web        | https://github.com/Arhiell/FigureVerse_Web         | Frontend SPA en React UMD con servidor estático y proxy a la API.         | 🖥️    |
-| Escritorio | https://github.com/BautiC-9/FigureVerse-Escritorio | Cliente de escritorio complementario para gestión y soporte.              | 🧩    |
+| Escritorio | https://github.com/BautiC-9/FigureVerse-Escritorio | App de Escritorio complementario para gestión y soporte.              | 🧩    |
 | API Node   | https://github.com/Arhiell/FigureVerse-API         | API REST en Node.js/Express con Sequelize, auth JWT y módulos de negocio. | ⚙️    |
 | API Python | https://github.com/Arhiell/FigureVerse_API_Python  | Servicios y utilidades complementarias en Python para tareas específicas. | 🐍    |
 
@@ -219,5 +219,5 @@ export const sequelize = new Sequelize({
 
 | Autor               | Perfil                      | Rol                                   |
 | ------------------- | --------------------------- | ------------------------------------- |
-| Ayala, Ariel        | https://github.com/Arhiell  | Desarrollo Web/API · Arquitectura     |
-| Capovilla, Bautista | https://github.com/BautiC-9 | Desarrollo Escritorio · Integraciones |
+| Ayala, Ariel        | https://github.com/Arhiell  | Desarrollo API (Node,Django) · Desarrollo Escritorio y Web  |
+| Capovilla, Bautista | https://github.com/BautiC-9 | Desarrollo API (Node,Django) · Desarrollo Escritorio y Web |
